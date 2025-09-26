@@ -1,7 +1,16 @@
-# Abaikan folder build dan node_modules
-dist/
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
 
-# Abaikan file tertentu
-output.css
+# Build
+dist/
+build/
+.cache/
+out/
+.next/
+*.log
+
+# Env files
 .env
+.env.local
