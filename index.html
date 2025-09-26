@@ -1,376 +1,1077 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="id">
-      <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Yayasan Sabilulhuda</title>
-          <link href="/dist/output.css" rel="stylesheet">
-        <style>
-          .slide {
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO Optimization -->
+    <title>Yayasan Sabilulhuda (SABDA) - Membangun Generasi Qur'ani</title>
+    <meta name="description" content="Yayasan Sabilulhuda (SABDA) berfokus pada pembangunan generasi Qur'ani yang berkarakter dan berilmu.">
+    <meta name="keywords" content="Yayasan Sabilulhuda, SABDA, pendidikan islam, beasiswa, donasi, generasi qur'ani">
+    <meta property="og:title" content="Yayasan Sabilulhuda (SABDA)">
+    <meta property="og:description" content="Membangun Generasi Qur'ani yang Berkarakter dan Berilmu.">
+    <meta property="og:image" content="images/logo_yayasan.png"> <!-- Ini logo Yayasan Sabda -->
+    <meta property="og:url" content="https://yayasansabilulhuda.com"> <!-- Ini URL domain Anda -->
+    <link rel="stylesheet" href="dist/output.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .slide {
             position: absolute;
             top: 0;
             left: 0;
-          }
-            html {
-    scroll-behavior: smooth;
-          }
-        </style>
-      </head>
-    <body class="bg-gray-50 text-gray-800">
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
 
-      <!--------------------------- NAVBAR -------------------------->
-      <header id="home" class="sticky top-0 z-50 bg-slate-500 shadow">
+    <!-- NAVBAR -->
+    <header id="home" class="fixed top-0 z-50 w-full bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-          <!-- Logo + Judul -->
-          <div class="flex items-center space-x-1">
-            <img src="images/logo_yayasan.png" alt="Logo" class="h-14 w-auto">
-            <h1 class="text-2xl font-bold italic text-yellow-400">
-              <span class="text-white">Yayasan</span>SABDA
+            <div class="flex items-center space-x-3" data-aos="fade-right">
+                <img src="images/logo_yayasan.png" alt="Logo" class="h-12 w-auto">
+                <h1 class="text-xl font-bold">
+                    <span class="text-emerald-600">Yayasan Sabilulhuda</span>
+                    <span class="text-yellow-600">(SABDA)</span>
+                </h1>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-blue-600 transition-colors">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">About</a>
+                <a href="#program" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Program</a>
+                <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Gallery</a>
+                <a href="#beasiswa" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Beasiswa</a>
+                <a href="#donasi" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Donasi</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-all">Contact</a>
+
+                <!-- Tombol Login Admin -->
+                <a href="admin.html" 
+                class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition-all">
+                    Login Admin
+                </a>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 md:hidden z-50">
+                <div class="p-6">
+                    <button id="close-menu" class="float-right text-gray-700 hover:text-red-500">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                    <nav class="mt-8 space-y-4">
+                        <a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                        <a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
+                        <a href="#program" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Program</a>
+                        <a href="#gallery" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Gallery</a>
+                        <a href="#beasiswa" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Beasiswa</a>
+                        <a href="#donasi" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Donasi</a>
+                        <a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
+
+                        <!-- Tombol Login Admin (Mobile) -->
+                        <a href="admin.html" 
+                        class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition-all">
+                            Login Admin
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <!-- Background Slider -->
+        <div class="absolute inset-0 z-0">
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('https://images.unsplash.com/photo-1666234573497-6a1f514d1b30?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8'); animation-delay: 0s;"></div>
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('https://images.unsplash.com/photo-1744264362119-bd94511b0597?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); animation-delay: 8s;"></div>
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('images/beasiswa.jpg'); animation-delay: 16s;"></div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80 z-0"></div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-pulse" data-aos="fade-up">
+                Yayasan Sabilulhuda
             </h1>
-          </div>
-
-          <!-- Mobile Menu - toggle with <details> -->
-          <details id="menu-btn" class="relative list-none md:hidden">
-            <summary class="cursor-pointer text-white appearance-none focus:outline-none">
-              <!-- Hamburger icon -->
-              <svg class="w-8 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </summary>
-
-            <div id="dropdown" class="absolute right-0 mt-4 w-52 bg-slate-600 text-white rounded-lg shadow-lg p-4 z-50 space-y-4">
-              <a href="#home" class="block hover:font-bold hover:text-yellow-300">Home</a>
-              <a href="#about" class="block hover:font-bold hover:text-yellow-300">About</a>
-              <a href="#program" class="block hover:font-bold hover:text-yellow-300">Program</a>
-              <a href="#contact" class="block hover:font-bold hover:text-yellow-300">Contact</a>
-            </div>
-          </details>
-
-          <!-- Menu Navigasi (Desktop) -->
-          <nav class="hidden md:flex md:items-center">
-            <ul class="flex space-x-6 bg-slate-600 z-50 rounded-md p-2 shadow-lg">
-              <li>
-                <a href="#home" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Home</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#about" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">About</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#program" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Program</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Contact</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <!------------------------ TENTANG KAMI ------------------------>
-      <section id="about" class="bg-gray-100 py-16 mt-4 mb-8 px-4 md:px-8">
-        <!-- Judul & Deskripsi -->
-        <div class="container  mt-45 mx-auto px-4 text-center">
-          <h3 class="text-3xl font-semibold mx-auto text-center py-4 text-slate-700mb-2">Tentang Kami</h3>
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-            Yayasan Sabilul Huda (SABDA) adalah lembaga pendidikan dan sosial yang bergerak dalam pengembangan karakter, literasi, dan nilai-nilai keislaman. Kami berdiri untuk menghadirkan solusi pendidikan yang ramah, berkualitas, dan penuh makna bagi generasi masa depan.
-          </p>
-        </div>
-
-        <!-- Card Box Visi & Misi -->
-        <div class="max-w-6xl mx-auto  grid-cols-1 md:grid-cols-5 flex-wrap gap-3 mt-8">
-
-          <!-- Card Visi -->
-          <div class="bg-white shadow-md rounded-xl p-6 text-left hover:shadow-lg transition">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Visi</h3>
-            <p class="text-gray-700 text-base leading-relaxed">
-              Menjadi lembaga yang melahirkan generasi berkarakter, cinta ilmu, dan siap menghadapi masa depan dengan nilai-nilai Islam yang kuat.
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Membangun Generasi Qur'ani yang Berkarakter dan Berilmu
             </p>
-          </div>
-
-          <!-- Card Misi -->
-          <div class="bg-white shadow-md rounded-xl p-6 text-left hover:shadow-lg transition">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Misi</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-2 text-base leading-relaxed">
-              <li>Menyelenggarakan pendidikan yang berbasis adab dan ilmu syar’i.</li>
-              <li>Mendampingi tumbuh kembang anak dengan pendekatan lembut dan visioner.</li>
-              <li>Memberdayakan masyarakat melalui program sosial, dakwah, dan literasi.</li>
-            </ul>
-          </div>
+            <div class="space-x-4" data-aos="fade-up" data-aos-delay="400">
+                <a href="#program" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Lihat Program
+                </a>
+                <a href="#donasi" class="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Donasi Sekarang
+                </a>
+            </div>
         </div>
-      </section>
 
-      <!------------------------- PROGRAM KAMI ------------------------>
-      <section id="program" class="py-12 bg-white">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-yellow-400/20 rounded-full floating" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- Tambahkan CSS -->
+    <style>
+    @keyframes fadeSlider {
+    0%, 33%, 100% { opacity: 0; }
+    10%, 23% { opacity: 1; }
+    }
+
+    .slider-bg {
+    animation: fadeSlider 24s infinite;
+    }
+    .slider-bg:nth-child(2) { animation-delay: 8s; }
+    .slider-bg:nth-child(3) { animation-delay: 16s; }
+
+    </style>
+
+     <!-- BAGIAN UNTUK KONTEN ADMIN -->
+    <section id="konten-admin" class="container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-center mb-12 text-blue-800" data-aos="fade-up">Artikel & Nasehat</h2>
+        <div id="konten-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Konten dari admin akan dimuat di sini oleh JavaScript -->
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-          <h3 class="text-3xl font-semibold text-center text-slate-600 mb-8">Program Kami</h3>
-          <div class="grid md:grid-cols-3 gap-6">
-            
-            <!-- Program Tahfidz -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Program Tahfidz</h4>
-              <p class="text-sm">Membina generasi Qur'ani melalui hafalan Al-Qur’an.</p>
-              
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-pendidikan1.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-            
-            <!-- Kajian Islam Rutin -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Kajian Islam Rutin</h4>
-              <p class="text-sm">Kajian online dan offline bersama ustadz pilihan.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-kajian.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tentang Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Yayasan Sabilul Huda (SABDA) adalah lembaga pendidikan dan sosial yang bergerak dalam pengembangan karakter, literasi, dan nilai-nilai keislaman.
+                </p>
             </div>
 
-            <!-- Santunan & Sosial -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Santunan & Sosial</h4>
-              <p class="text-sm">Program bantuan dan dukungan masyarakat dhuafa.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-dhuafa.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-
-            <!-- Wakaf -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Wakaf/Donasi</h4>
-              <p class="text-sm">Pembebasan tanah, pembangunan masjid, dan fasilitas umum lainnya.</p>
-              <!-- Wakaf_01 -->
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/pembebasan-lahan1.jpeg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center">Renovasi Musholah</h2>
-              </a>
-              <!-- Wakaf_02 -->
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/pembebasan-lahan2.jpeg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center">Wakaf Pembebasan Tanah</h2>
-              </a>
-            </div>
-
-            <!-- Umroh & Haji -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Layanan Umroh & Haji</h4>
-              <p class="text-sm">Melayani perjalanan ibadah umroh dan haji yang amanah dan terpercaya.</p>
-                          <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-haji.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-
-            <!-- Servis AC -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Servis AC</h4>
-              <p class="text-sm">Perawatan dan perbaikan AC rumah dan kantor secara profesional.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-ac.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-
-            <!-- Sumur Bor & Tanah -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Sumur Bor & Tanah</h4>
-              <p class="text-sm">Pembuatan sumur bor dan penyediaan lahan air untuk masyarakat.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-sumur.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-
-            <!-- Beasiswa Pendidikan -->
-            <div class="bg-gray-100 p-6 rounded-xl flitems-center justify-center shadow hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-slate-700 mb-2">Beasiswa Pendidikan</h3>
-              <p class="text-gray-600">Dukungan finansial bagi siswa kurang mampu untuk terus mengenyam pendidikan berkualitas.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/beasiswa.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-                <!-- Info Beasiswa -->
-                <div class="border rounded-lg p-4 bg-slate-100  max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Beasiswa S1 di Universitas Madinah</h3>
-                      <p class="text-sm text-gray-600">Yuk buruan daftarin anaknya atau sodaranya yang lulusan SMA / Sederajat.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/10/04/beasiswa-s1-di-universitas-madinah/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-eye text-blue-600 mr-3"></i>Visi
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Menjadi lembaga yang melahirkan generasi berkarakter, cinta ilmu, dan siap menghadapi masa depan dengan nilai-nilai Islam yang kuat.
+                        </p>
                     </div>
-                  </div>
                 </div>
 
-                <div class="border rounded-lg p-4 bg-slate-100 max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Beasiswa S1 di Universitas Ummul Quro</h3>
-                      <p class="text-sm text-gray-600">Yuk buruan daftarin anaknya atau sodaranya yang lulusan SMA / Sederajat.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/10/04/beasiswa-di-ummulquro-makkah/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
+                <div data-aos="fade-left">
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-bullseye text-purple-600 mr-3"></i>Misi
+                        </h3>
+                        <ul class="text-gray-700 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Menyelenggarakan pendidikan berbasis adab dan ilmu syar'i
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Mendampingi tumbuh kembang anak dengan pendekatan lembut
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Memberdayakan masyarakat melalui program sosial dan dakwah
+                            </li>
+                        </ul>
                     </div>
-                  </div>
-                </div>
-
-                <div class="border rounded-lg p-4 bg-slate-100 max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Raja Salman membuka Masjid Quba 24 jam penuh</h3>
-                      <p class="text-sm text-gray-600">Memberi kemudahan kepada para penuntut ilmu dan peziarah di Madinah.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/09/27/raja-salman-membuka-masjid-quba-24-jam/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
-                    </div>
-                  </div>
                 </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-------------------------- ALAMAT KAMI ------------------------>
-      <section id="about" class="bg-gray-50 py-14 px-4">
-        <div class="container mx-auto px-4 mb-8">
-          <h2 class="text-3xl font-bold text-center py-4 text-slate-600 mb-10">Alamat Kami</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Card Cabang 1 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Kantor Pusat</h3>
-              <p class="text-gray-700 mb-4">Jl. Segeran Lor Pulak Penanggul RT.05 RW. 03 Juntinyuat-Indramayu</p>
-              <a href="https://maps.app.goo.gl/oQeT9MzYTDH2uCGP6?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
+    <!-- PROGRAM SECTION -->
+    <section id="program" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Program Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
             </div>
 
-            <!-- Card Cabang 2 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Cabang Jakarta (1)</h3>
-              <p class="text-gray-700 mb-4">Jl. Pengadegan Raya No. 20 Pancoran Timur-Jakarta Selatan</p>
-              <a href="https://maps.app.goo.gl/HM2LTWo7sQq84ApM8?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Program Cards -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300" data-aos="fade-up">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1666234573497-6a1f514d1b30?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8" alt="Qur'an" class="h-full w-full object-cover rounded" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Program Tahfidz</h3>
+                        <p class="text-gray-600 mb-4">Membina generasi Qur'ani melalui hafalan Al-Qur'an dengan metode yang menyenangkan.</p>
+                        <a href="#pendaftaran" class="text-blue-600 hover:text-blue-800 font-semibold">Daftar Sekarang →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1744264362119-bd94511b0597?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kajian-islam" class="h-full w-full object-cover rounded" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Kajian Islam</h3>
+                        <p class="text-gray-600 mb-4">Kajian rutin online dan offline bersama ustadz pilihan yang berpengalaman.</p>
+                        <a href="#pendaftaran" class="text-blue-600 hover:text-blue-800 font-semibold">Ikuti Kajian →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1567057419565-4349c49d8a04?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D" alt="Program-sosial" class="h-full w-full object-cover rounded" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Program Sosial</h3>
+                        <p class="text-gray-600 mb-4">Santunan dan bantuan untuk masyarakat dhuafa serta program pemberdayaan.</p>
+                        <a href="#donasi" class="text-blue-600 hover:text-blue-800 font-semibold">Berdonasi →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galeri Kegiatan</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
             </div>
 
-            <!-- Card Cabang 3 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Cabang Jakarta (2)</h3>
-              <p class="text-gray-700 mb-4">Jl. Turi 1 No. 33 A RT. 12 RW. 03 Lenteng Agung-Jakarta Selatan</p>
-              <a href="https://maps.app.goo.gl/1CQKm8f5MuLB2Bky9?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!------------------------ KONTAK & EMAIL KAMI ------------------->
-      <section id="contact" class="bg-white py-14 px-4">
-        <div class="container mx-auto px-4 space-y-6">
-          <h2 class="text-3xl font-bold text-center py-4 mb-3 text-slate-600">Informasi Kontak</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-
-            <!-- Kontak Umum -->
-            <div class="bg-gray-100 shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Telepon / WhatsApp</h3>
-              <a  href="https://wa.me/6281234567890" target="_blank" class="text-slate-600 hover:underline hover:font-bold">📞 0877-1772-3865</a>
+            <!-- Gallery Filter -->
+            <div class="flex justify-center mb-12" data-aos="fade-up">
+                <div class="bg-gray-100 rounded-full p-2">
+                    <button class="gallery-filter px-6 py-2 rounded-full bg-blue-600 text-white" data-filter="all">Semua</button>
+                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="tahfidz">Tahfidz</button>
+                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="kajian">Kajian</button>
+                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="sosial">Sosial</button>
+                </div>
             </div>
 
-            <!-- Email -->
-            <div class="bg-gray-100 shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Email</h3>
-              <a href="mailto:sabilulhuda02@gmail.com" target="_blank" class="text-slate-600 hover:underline hover:font-bold">📧 sabilulhuda02@gmail.com</a>
+            <!-- Gallery Grid -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="gallery-item tahfidz" data-aos="zoom-in">
+                    <img src="images/program-pendidikan1.jpg" alt="Tahfidz" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item kajian" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/program-kajian.jpg" alt="Kajian" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item sosial" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/program-dhuafa.jpg" alt="Sosial" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item tahfidz" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="images/beasiswa.jpg" alt="Beasiswa" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!----------------------- VIDEO KAJIAN ----------------------->
-      <section class="relative h-[300px] md:h-[500px] overflow-hidden">
-        <div class="absolute inset-0 w-full h-full">
-          <div class="slider-youtube w-full h-full relative ">
-            <!-- Video 1 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/OHha4lncvmE?autoplay=1&mute=1&loop=1&playlist=OHha4lncvmE&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
+    <!-- Modal for Gallery -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-            <!-- Video 2 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/Pz_geD1T4VA?autoplay=1&mute=1&loop=1&playlist=Pz_geD1T4VA&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-
-            <!-- Video 3 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/3XzBdd62o_4?autoplay=1&mute=1&loop=1&playlist=3XzBdd62o_4&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-          </div>
+    <!-- Khusus Wakaf & Renovasi -->
+    <section class="py-20 bg-slate-100">
+    <div class="container mx-auto px-4">
+        <!-- Judul -->
+        <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Wakaf & Renovasi</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Pembebasan tanah, pembangunan masjid, dan renovasi mushola demi kenyamanan ibadah umat.
+        </p>
         </div>
 
-        <!-- Video Kajian-kajian -->
-        <div class="relative z-50 bg-black/60 text-white px-6 py-3 rounded text-center">
-          <h2 class="relative z-50 text-3xl md:text-5xl font-bold text-white text-center mb-1 bg-black/0 px-4 py-2 rounded">
-            Video Kajian-kajian
-          </h2>
+        <!-- Grid Card -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+            <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan1.jpeg')">
+            <img src="images/pembebasan-lahan1.jpeg" alt="Renovasi Mushola" class="h-full w-full object-cover" />
+            </div>
+            <div class="p-6">
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">Renovasi Mushola</h3>
+            <p class="text-gray-600 mb-4">
+                Mendukung renovasi mushola agar lebih nyaman, bersih, dan layak digunakan untuk kegiatan ibadah serta pembinaan umat.
+            </p>
+            <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                Donasi Sekarang →
+            </a>
+            </div>
         </div>
-      </section>
 
-      <!---------------------------------- FOOTER ----------------------------->
-      <footer class="bg-slate-500 text-white py-6 mt-10">
-        <div class="container mx-auto px-4 text-center">
-          <p>&copy; 2025 <span class="text-yellow-400 font-bold">Yayasan Sabilul Huda</span> All rights reserved.</p>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="150">
+            <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan2.jpeg')">
+            <img src="images/pembebasan-lahan2.jpeg" alt="Pembebasan Tanah" class="h-full w-full object-cover" />
+            </div>
+            <div class="p-6">
+            <h3 class="text-2xl font-bold mb-3 text-gray-800">Pembebasan Tanah</h3>
+            <p class="text-gray-600 mb-4">
+                Berkontribusi dalam pembebasan lahan untuk pembangunan masjid dan fasilitas umum yang bermanfaat bagi masyarakat luas.
+            </p>
+            <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                Donasi Sekarang →
+            </a>
+            </div>
         </div>
 
-        <div class="flex space-x-4 pt-2 mt-1 items-center justify-center text-base font-medium">
-          <!-- YouTube -->
-          <a href="http://www.youtube.com/@yayasansabilulhudasabda4717" target="_blank" class="flex items-center hover:text-red-400 transition">
-            <svg class="w-6 h-6 mr-2 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19.6 3H4.4C3.1 3 2 4.1 2 5.4v13.2C2 19.9 3.1 21 4.4 21h15.2c1.3 0 2.4-1.1 2.4-2.4V5.4C22 4.1 20.9 3 19.6 3zM10 16.5v-9l6 4.5-6 4.5z"/>
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="https://instagram.com/yayasansabilul" target="_blank" class="flex items-center hover:text-pink-400 transition">
-            <svg class="w-6 h-6 mr-2 text-whit" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
-            </svg>
-          </a>
         </div>
-      </footer>
-      <!------------------ JS ------------------->
-      <script src="script.js"></script>
+    </div>
+    </section>
 
-    </body>
-</html>                                                                                     
+<!-- Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <span class="absolute top-4 right-6 text-white text-4xl cursor-pointer" onclick="closeModal()">&times;</span>
+  <img id="modalImage" src="" alt="Poster Full" class="max-h-[90%] max-w-[90%] rounded-lg shadow-2xl">
+</div>
+
+<!-- Script Modal -->
+<script>
+  function openModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("imageModal").classList.remove("hidden");
+    document.getElementById("imageModal").classList.add("flex");
+  }
+  function closeModal() {
+    document.getElementById("imageModal").classList.remove("flex");
+    document.getElementById("imageModal").classList.add("hidden");
+  }
+</script>
+
+
+    <!-- YOUTUBE SLIDER SECTION -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-4">Video Kajian Terbaru</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="youtube-slider overflow-hidden rounded-2xl">
+                    <div class="flex transition-transform duration-500" id="videoSlider">
+                        <div class="w-full flex-shrink-0">
+                            <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/OHha4lncvmE" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="w-full flex-shrink-0">
+                            <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/Pz_geD1T4VA" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="w-full flex-shrink-0">
+                            <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/3XzBdd62o_4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all" onclick="prevVideo()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all" onclick="nextVideo()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Slider Dots -->
+                <div class="flex justify-center mt-6 space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all video-dot active" onclick="goToVideo(0)"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all video-dot" onclick="goToVideo(1)"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all video-dot" onclick="goToVideo(2)"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEASISWA SECTION -->
+    <section id="beasiswa" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Program Beasiswa</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Kami menyediakan berbagai program beasiswa untuk mendukung pendidikan generasi muda
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-university text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Beasiswa S1 Universitas Madinah</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Program beasiswa penuh untuk melanjutkan studi S1 di Universitas Islam Madinah, Arab Saudi.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Biaya kuliah gratis
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Tunjangan hidup bulanan
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Tiket pesawat PP
+                        </div>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openBeasiswaForm('madinah')">
+                        Daftar Sekarang
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-kaaba text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Beasiswa S1 Universitas Ummul Quro</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Program beasiswa untuk studi S1 di Universitas Ummul Quro, Makkah Al-Mukarramah.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Biaya kuliah gratis
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Bantuan akomodasi
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Bimbingan akademik
+                        </div>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openBeasiswaForm('ummulquro')">
+                        Daftar Sekarang
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Beasiswa Lokal</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Program bantuan pendidikan untuk siswa kurang mampu di Indonesia.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Bantuan SPP
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Perlengkapan sekolah
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Bimbingan belajar
+                        </div>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openBeasiswaForm('lokal')">
+                        Daftar Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENDAFTARAN TAHSIN TAHFIZ SECTION -->
+    <section id="pendaftaran" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pendaftaran Tahsin & Tahfiz</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Bergabunglah dengan program Tahsin dan Tahfiz kami. Tersedia kelas online dan offline.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Online Class -->
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-xl" data-aos="fade-right">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-laptop text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Kelas Online</h3>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Fleksibel waktu belajar
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Bimbingan ustadz berpengalaman
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Materi pembelajaran lengkap
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Sertifikat resmi
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semib
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openTahsinForm('online')">
+                            Daftar Kelas Online
+                        </button>
+                    </div>
+
+                    <!-- Offline Class -->
+                    <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-xl" data-aos="fade-left">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Kelas Offline</h3>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Interaksi langsung dengan ustadz
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Suasana belajar yang kondusif
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Praktik langsung makhorijul huruf
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                Komunitas belajar yang solid
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openTahsinForm('offline')">
+                            Daftar Kelas Offline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DONASI SECTION -->
+    <section id="donasi" class="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Donasi & Wakaf</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Berpartisipasilah dalam kebaikan melalui donasi dan wakaf untuk kemajuan pendidikan Islam
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Donasi Pendidikan -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-book-open text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Donasi Pendidikan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Dukung program pendidikan Al-Qur'an dan pembangunan fasilitas belajar.</p>
+                        <div class="space-y-3 mb-6">
+                            <button class="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(50000)">
+                                Rp 50.000
+                            </button>
+                            <button class="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(100000)">
+                                Rp 100.000
+                            </button>
+                            <button class="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(250000)">
+                                Rp 250.000
+                            </button>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openDonationForm('pendidikan')">
+                            Donasi Sekarang
+                        </button>
+                    </div>
+
+                    <!-- Wakaf Tanah -->
+                    <div id="wakaf" class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-home text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Wakaf Tanah & Bangunan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Berpartisipasi dalam pembebasan tanah dan pembangunan masjid.</p>
+                        <div class="space-y-3 mb-6">
+                            <button class="w-full bg-green-100 hover:bg-green-200 text-green-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(500000)">
+                                Rp 500.000
+                            </button>
+                            <button class="w-full bg-green-100 hover:bg-green-200 text-green-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(1000000)">
+                                Rp 1.000.000
+                            </button>
+                            <button class="w-full bg-green-100 hover:bg-green-200 text-green-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(2500000)">
+                                Rp 2.500.000
+                            </button>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openDonationForm('wakaf')">
+                            Wakaf Sekarang
+                        </button>
+                    </div>
+
+                    <!-- Santunan Dhuafa -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-hands-helping text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Santunan Dhuafa</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Bantu saudara-saudara kita yang membutuhkan bantuan sosial.</p>
+                        <div class="space-y-3 mb-6">
+                            <button class="w-full bg-yellow-100 hover:bg-yellow-200 text-yellow-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(25000)">
+                                Rp 25.000
+                            </button>
+                            <button class="w-full bg-yellow-100 hover:bg-yellow-200 text-yellow-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(75000)">
+                                Rp 75.000
+                            </button>
+                            <button class="w-full bg-yellow-100 hover:bg-yellow-200 text-yellow-800 py-2 rounded-lg transition-all" onclick="setDonationAmount(150000)">
+                                Rp 150.000
+                            </button>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onclick="openDonationForm('dhuafa')">
+                            Berdonasi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="bg-white rounded-2xl shadow-xl p-8" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Metode Pembayaran</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center p-4 border-2 border-gray-200 rounded-xl hover:border-blue-400 transition-all cursor-pointer">
+                            <i class="fas fa-university text-3xl text-blue-600 mb-3"></i>
+                            <h4 class="font-semibold text-gray-800">Transfer Bank</h4>
+                            <p class="text-sm text-gray-600">BCA, Mandiri, BRI, BNI</p>
+                        </div>
+                        <div class="text-center p-4 border-2 border-gray-200 rounded-xl hover:border-green-400 transition-all cursor-pointer">
+                            <i class="fas fa-mobile-alt text-3xl text-green-600 mb-3"></i>
+                            <h4 class="font-semibold text-gray-800">E-Wallet</h4>
+                            <p class="text-sm text-gray-600">GoPay, OVO, DANA</p>
+                        </div>
+                        <div class="text-center p-4 border-2 border-gray-200 rounded-xl hover:border-purple-400 transition-all cursor-pointer">
+                            <i class="fas fa-credit-card text-3xl text-purple-600 mb-3"></i>
+                            <h4 class="font-semibold text-gray-800">Kartu Kredit</h4>
+                            <p class="text-sm text-gray-600">Visa, Mastercard</p>
+                        </div>
+                        <div class="text-center p-4 border-2 border-gray-200 rounded-xl hover:border-red-400 transition-all cursor-pointer">
+                            <i class="fas fa-store text-3xl text-red-600 mb-3"></i>
+                            <h4 class="font-semibold text-gray-800">Retail</h4>
+                            <p class="text-sm text-gray-600">Indomaret, Alfamart</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALAMAT SECTION -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Alamat Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-xl text-center transform hover:scale-105 transition-all duration-300" data-aos="fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-building text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Kantor Pusat</h3>
+                    <p class="text-gray-600 mb-6">Jl. Segeran Lor Pulak Penanggul RT.05 RW.03 Juntinyuat-Indramayu</p>
+                    <a href="https://maps.app.goo.gl/oQeT9MzYTDH2uCGP6?g_st=aw" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Lihat di Maps
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-xl text-center transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-city text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cabang Jakarta (1)</h3>
+                    <p class="text-gray-600 mb-6">Jl. Pengadegan Raya No. 20 Pancoran Timur-Jakarta Selatan</p>
+                    <a href="https://maps.app.goo.gl/HM2LTWo7sQq84ApM8?g_st=aw" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Lihat di Maps
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-xl text-center transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marked-alt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cabang Jakarta (2)</h3>
+                    <p class="text-gray-600 mb-6">Jl. Turi 1 No. 33 A RT. 12 RW. 03 Lenteng Agung-Jakarta Selatan</p>
+                    <a href="https://maps.app.goo.gl/1CQKm8f5MuLB2Bky9?g_st=aw" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Lihat di Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-8">Informasi Kontak</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Telepon / WhatsApp</h4>
+                                <a href="https://wa.me/6287717723865" target="_blank" class="text-blue-400 hover:text-blue-300">0877-1772-3865 (Ustadz Atoillah Bastomi,Lc)</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:sabilulhuda02@gmail.com" class="text-blue-400 hover:text-blue-300">sabilulhuda02@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Jam Operasional</h4>
+                                <p class="text-gray-300">Senin - Jumat: 08:00 - 17:00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-8">Kirim Pesan</h3>
+                    <form class="space-y-6" onsubmit="sendMessage(event)">
+                        <div>
+                            <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Nomor WhatsApp" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <textarea placeholder="Pesan Anda" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="images/logo_yayasan.png" alt="Logo" class="h-12 w-auto">
+                        <h3 class="text-xl font-bold">Yayasan Sabilulhuda</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">Membangun generasi Qur'ani yang berkarakter dan berilmu untuk masa depan yang lebih baik.</p>
+                    <div class="flex space-x-4">
+                        <a href="http://www.youtube.com/@yayasansabilulhudasabda4717" target="_blank" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://instagram.com/yayasansabilul" target="_blank" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/yayasan.sabilul.huda.2025" target="_blank" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@yayasan.sabilulhu" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Program Kami</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#program" class="hover:text-white transition-colors">Tahfidz Al-Qur'an</a></li>
+                        <li><a href="#program" class="hover:text-white transition-colors">Kajian Islam</a></li>
+                        <li><a href="#program" class="hover:text-white transition-colors">Program Sosial</a></li>
+                        <li><a href="#beasiswa" class="hover:text-white transition-colors">Beasiswa</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Layanan</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#pendaftaran" class="hover:text-white transition-colors">Pendaftaran Online</a></li>
+                        <li><a href="#donasi" class="hover:text-white transition-colors">Donasi & Wakaf</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Konsultasi</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Galeri Kegiatan</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Dapatkan update terbaru tentang program dan kegiatan kami.</p>
+                    <form class="space-y-3" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" placeholder="Email Anda" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                            Berlangganan
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">© 2025 <span class="text-emerald-400 font-semibold">Yayasan Sabilulhuda (SABDA)</span>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6287717723865" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 z-50 pulse-slow">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 left-6 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-2xl hover:bg-blue-700 transition-all transform hover:scale-110 z-50 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- MODALS -->
+    
+    <!-- Beasiswa Form Modal -->
+    <div id="beasiswaModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Pendaftaran Beasiswa</h3>
+                <button onclick="closeBeasiswaModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form onsubmit="submitBeasiswaForm(event)">
+                <div class="space-y-4">
+                    <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="tel" placeholder="Nomor WhatsApp" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Jenis Kelamin</option>
+                        <option value="laki-laki">Laki-laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                    <input type="date" placeholder="Tanggal Lahir" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <textarea placeholder="Alamat Lengkap" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" required></textarea>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Pendidikan Terakhir</option>
+                        <option value="sma">SMA/Sederajat</option>
+                        <option value="d3">Diploma 3</option>
+                        <option value="s1">Sarjana (S1)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full mt-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Daftar Beasiswa
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tahsin Form Modal -->
+    <div id="tahsinModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Pendaftaran Tahsin & Tahfiz</h3>
+                <button onclick="closeTahsinModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form onsubmit="submitTahsinForm(event)">
+                <div class="space-y-4">
+                    <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="tel" placeholder="Nomor WhatsApp" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Program</option>
+                        <option value="tahsin">Tahsin (Perbaikan Bacaan)</option>
+                        <option value="tahfiz">Tahfiz (Menghafal Al-Qur'an)</option>
+                        <option value="both">Tahsin & Tahfiz</option>
+                    </select>
+                    <select id="kelasType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Jenis Kelas</option>
+                        <option value="online">Kelas Online</option>
+                        <option value="offline">Kelas Offline</option>
+                    </select>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Level Kemampuan</option>
+                        <option value="pemula">Pemula</option>
+                        <option value="menengah">Menengah</option>
+                        <option value="lanjutan">Lanjutan</option>
+                    </select>
+                    <textarea placeholder="Catatan Tambahan (Opsional)" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full mt-6 bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Daftar Sekarang
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donation Form Modal -->
+    <div id="donationModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Form Donasi</h3>
+                <button onclick="closeDonationModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form onsubmit="submitDonationForm(event)">
+                <div class="space-y-4">
+                    <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <input type="tel" placeholder="Nomor WhatsApp" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    <div class="relative">
+                        <span class="absolute left-3 top-3 text-gray-500">Rp</span>
+                        <input type="number" id="donationAmount" placeholder="0" class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                    </div>
+                    <select id="donationType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Jenis Donasi</option>
+                        <option value="pendidikan">Donasi Pendidikan</option>
+                        <option value="wakaf">Wakaf Tanah & Bangunan</option>
+                        <option value="dhuafa">Santunan Dhuafa</option>
+                    </select>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" required>
+                        <option value="">Pilih Metode Pembayaran</option>
+                        <option value="bank">Transfer Bank</option>
+                        <option value="ewallet">E-Wallet</option>
+                        <option value="credit">Kartu Kredit</option>
+                        <option value="retail">Retail (Indomaret/Alfamart)</option>
+                    </select>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="anonymous" class="mr-3">
+                        <label for="anonymous" class="text-gray-700">Donasi sebagai Hamba Allah (Anonim)</label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full mt-6 bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Lanjutkan Pembayaran
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 text-center transform scale-95 transition-all duration-300">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-3xl text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Berhasil!</h3>
+            <p id="successMessage" class="text-gray-600 mb-6">Pendaftaran Anda telah berhasil dikirim.</p>
+            <button onclick="closeSuccessModal()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 text-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600">Memproses data Anda...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="home.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>
