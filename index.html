@@ -1,176 +1,315 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yayasan Sabilulhuda (SABDA) - Membangun Generasi Qur'ani</title>
-  <meta name="description" content="Yayasan Sabilulhuda (SABDA) berfokus pada pembangunan generasi Qur'ani yang berkarakter dan berilmu.">
-  <link rel="stylesheet" href="dist/output.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO Optimization -->
+    <title>Yayasan Sabilulhuda (SABDA) - Membangun Generasi Qur'ani</title>
+    <meta name="description" content="Yayasan Sabilulhuda (SABDA) berfokus pada pembangunan generasi Qur'ani yang berkarakter dan berilmu.">
+    <meta name="keywords" content="Yayasan Sabilulhuda, SABDA, pendidikan islam, beasiswa, donasi, generasi qur'ani">
+    <meta property="og:title" content="Yayasan Sabilulhuda (SABDA)">
+    <meta property="og:description" content="Membangun Generasi Qur'ani yang Berkarakter dan Berilmu.">
+    <meta property="og:image" content="images/logo_yayasan.png"> <!-- Ini logo Yayasan Sabda -->
+    <meta property="og:url" content="https://yayasansabilulhuda.com"> <!-- Ini URL domain Anda -->
+    <link rel="stylesheet" href="dist/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loader-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+          /* Floating WhatsApp button animations */
+        @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
 
-  <style>
-    html { scroll-behavior: smooth; }
-    .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    .floating { animation: floating 3s ease-in-out infinite; }
+        50% {
+            transform: translateY(-6px);
+        }
+        }
 
-    /* Slider Animation */
-    @keyframes fadeSlider {
-      0%, 33%, 100% { opacity: 0; }
-      10%, 23% { opacity: 1; }
-    }
-    .slider-bg { animation: fadeSlider 24s infinite; }
+        @keyframes ping-slow {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
 
-    /* Modal Image */
-    .modal {
-      display: none; position: fixed; z-index: 1000;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.9);
-    }
-    .modal-content {
-      margin: auto; display: block;
-      width: 90%; max-width: 500px; max-height: 80%;
-    }
+        75%,
+        100% {
+            transform: scale(2.2);
+            opacity: 0;
+        }
+        }
 
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      header h1 { font-size: 1rem; }
-      .hero-bg h1 { font-size: 2rem !important; }
-      .hero-bg p { font-size: 1rem !important; }
-      .hero-bg a { font-size: 0.9rem !important; padding: 0.6rem 1.2rem; }
-      .container { padding-left: 1rem; padding-right: 1rem; }
-      .floating { display: none; }
-    }
-  </style>
+        .animate-float {
+        animation: float 1s ease-in-out infinite;
+        }
+
+        .after\:animate-ping-slow::after {
+        animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+    </style>
 </head>
-
 <body class="bg-gray-50 text-gray-800">
-  <!-- NAVBAR -->
-  <header id="home" class="fixed top-0 z-50 w-full bg-white shadow-md">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="images/logo_yayasan.png" alt="Logo" class="h-10 w-auto">
-        <h1 class="text-base sm:text-xl font-bold leading-tight">
-          <span class="text-emerald-600">Yayasan Sabilulhuda</span>
-          <span class="text-yellow-600">(SABDA)</span>
-        </h1>
-      </div>
 
-      <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-blue-600">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
-
-      <!-- Desktop menu -->
-      <nav class="hidden md:flex items-center space-x-6 text-sm lg:text-base">
-        <a href="#home" class="hover:text-blue-600 font-medium">Home</a>
-        <a href="#about" class="hover:text-blue-600 font-medium">About</a>
-        <a href="#program" class="hover:text-blue-600 font-medium">Program</a>
-        <a href="#gallery" class="hover:text-blue-600 font-medium">Gallery</a>
-        <a href="#beasiswa" class="hover:text-blue-600 font-medium">Beasiswa</a>
-        <a href="#donasi" class="hover:text-blue-600 font-medium">Donasi</a>
-        <a href="#contact" class="hover:text-blue-600 font-medium">Contact</a>
-        <a href="admin.html" class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow">
-          Login Admin
-        </a>
-      </nav>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 md:hidden z-50">
-      <div class="p-6">
-        <button id="close-menu" class="float-right text-gray-700 hover:text-red-500">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-        <nav class="mt-10 space-y-3 text-lg">
-          <a href="#home" class="block hover:text-blue-600">Home</a>
-          <a href="#about" class="block hover:text-blue-600">About</a>
-          <a href="#program" class="block hover:text-blue-600">Program</a>
-          <a href="#gallery" class="block hover:text-blue-600">Gallery</a>
-          <a href="#beasiswa" class="block hover:text-blue-600">Beasiswa</a>
-          <a href="#donasi" class="block hover:text-blue-600">Donasi</a>
-          <a href="#contact" class="block hover:text-blue-600">Contact</a>
-          <a href="admin.html" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-            Login Admin
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image:url('https://images.unsplash.com/photo-1666234573497-6a1f514d1b30?w=800');"></div>
-      <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image:url('https://images.unsplash.com/photo-1744264362119-bd94511b0597?q=80'); animation-delay:8s;"></div>
-      <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image:url('images/beasiswa.jpg'); animation-delay:16s;"></div>
-    </div>
-
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80"></div>
-    <div class="container mx-auto px-4 text-center relative z-10">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-pulse">Yayasan Sabilulhuda</h1>
-      <p class="text-lg md:text-2xl mb-8 max-w-2xl mx-auto">Membangun Generasi Qur'ani yang Berkarakter dan Berilmu</p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <a href="#program" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition transform hover:scale-105">
-          Lihat Program
-        </a>
-        <a href="#donasi" class="border-2 border-white hover:bg-white hover:text-gray-900 px-6 py-3 rounded-full font-semibold transition transform hover:scale-105">
-          Donasi Sekarang
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-4xl md:text-4xl font-bold text-gray-800 mb-4">Misi Kami</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-        <p class="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
-          Yayasan Sabilul Huda (SABDA) adalah lembaga pendidikan dan sosial yang bergerak dalam pengembangan karakter, literasi, dan nilai-nilai keislaman.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-10 items-start">
-        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-2xl shadow-xl">
-          <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
-            <i class="fas fa-eye text-blue-600 mr-3"></i>Visi
-          </h3>
-          <p class="text-gray-700 leading-relaxed">
-            Menjadi lembaga yang melahirkan generasi berkarakter, cinta ilmu, dan siap menghadapi masa depan dengan nilai-nilai Islam yang kuat.
-          </p>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="text-center">
+            <div class="loader"></div>
+            <div class="loader-text">Memuat Yayasan SABDA...</div>
         </div>
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl shadow-xl">
-          <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
-            <i class="fas fa-bullseye text-purple-600 mr-3"></i>Misi
-          </h3>
-          <ul class="text-gray-700 space-y-2 text-sm md:text-base">
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>Menyelenggarakan pendidikan berbasis adab dan ilmu syar'i
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>Mendampingi tumbuh kembang anak dengan pendekatan lembut
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>Memberdayakan masyarakat melalui program sosial dan dakwah
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </section>
+
+    <!-- NAVBAR -->
+    <header id="home" class="fixed top-0 z-50 w-full bg-white shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3" data-aos="fade-right">
+                <img src="images/logo_yayasan.png" alt="Logo" class="h-12 w-auto">
+                <h1 class="text-xl font-bold">
+                    <span class="text-emerald-600">Yayasan Sabilulhuda</span>
+                    <span class="text-yellow-600">(SABDA)</span>
+                </h1>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-blue-600 transition-colors">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-12">
+                <a href="#home" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Home</a>
+                <a href="#about" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">About</a>
+                <a href="#program" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Program</a>
+                <a href="#gallery" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Gallery</a>
+                <a href="#beasiswa" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Beasiswa</a>
+                <a href="#donasi" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Donasi</a>
+                <a href="#contact" class="nav-link text-slat-700 hover:text-blue-600 font-medium transition-all">Kontak</a>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 md:hidden z-50">
+                <div class="p-6">
+                    <button id="close-menu" class="float-right text-gray-700 hover:text-red-500 p-2">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                    <nav class="mt-12 space-y-4">
+                        <a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Home</a>
+                        <a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">About</a>
+                        <a href="#program" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Program</a>
+                        <a href="#gallery" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Gallery</a>
+                        <a href="#beasiswa" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Beasiswa</a>
+                        <a href="#donasi" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Donasi</a>
+                        <a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-3 border-b border-gray-100">Kontak</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <!-- Background Slider -->
+        <div class="absolute inset-0 z-0">
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('https://images.unsplash.com/photo-1666234573497-6a1f514d1b30?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8'); animation-delay: 0s;"></div>
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('https://images.unsplash.com/photo-1744264362119-bd94511b0597?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); animation-delay: 8s;"></div>
+            <div class="slider-bg absolute inset-0 bg-cover bg-center opacity-0 animate-fade-slider" style="background-image: url('images/beasiswa.jpg'); animation-delay: 16s;"></div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80 z-0"></div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-pulse" data-aos="fade-up">
+                Yayasan Sabilulhuda
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Membangun Generasi Qur'ani yang Berkarakter dan Berilmu
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mt-6" 
+                data-aos="fade-up" data-aos-delay="400">
+
+                <!-- Tombol Lihat Program -->
+                <a href="#program" 
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 text-center whitespace-nowrap">
+                    Lihat Program
+                </a>
+
+                <!-- Tombol Donasi Sekarang -->
+                <a href="#donasi" 
+                    class="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 text-center whitespace-nowrap">
+                    Donasi Sekarang
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-yellow-400/20 rounded-full floating" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- Tambahkan CSS -->
+    <style>
+    @keyframes fadeSlider {
+    0%, 33%, 100% { opacity: 0; }
+    10%, 23% { opacity: 1; }
+    }
+
+    .slider-bg {
+    animation: fadeSlider 24s infinite;
+    }
+    .slider-bg:nth-child(2) { animation-delay: 8s; }
+    .slider-bg:nth-child(3) { animation-delay: 16s; }
+    </style>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-white scroll-mt-20 md:scroll-mt-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tentang Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Yayasan Sabilul Huda (SABDA) adalah lembaga pendidikan dan sosial yang bergerak dalam pengembangan karakter, literasi, dan nilai-nilai keislaman.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-eye text-blue-600 mr-3"></i>Visi
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Menjadi lembaga yang melahirkan generasi berkarakter, cinta ilmu, dan siap menghadapi masa depan dengan nilai-nilai Islam yang kuat.
+                        </p>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-bullseye text-purple-600 mr-3"></i>Misi
+                        </h3>
+                        <ul class="text-gray-700 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Menyelenggarakan pendidikan berbasis adab dan ilmu syar'i
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Mendampingi tumbuh kembang anak dengan pendekatan lembut
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                Memberdayakan masyarakat melalui program sosial dan dakwah
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- PROGRAM SECTION -->
-    <section id="program" class="py-20 bg-gray-50">
+    <section id="program" class="py-20 bg-gray-50 scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Program Kami</h2>
@@ -182,7 +321,7 @@
                 <!-- Program Cards -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300" data-aos="fade-up">
                     <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1666234573497-6a1f514d1b30?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8" alt="Qur'an" class="h-full w-full object-cover rounded" />
+                        <img src="images/achievement/d3.jpeg" alt="Qur'an" class="h-full w-full object-cover rounded" />
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Program Tahfidz</h3>
@@ -204,11 +343,11 @@
 
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1567057419565-4349c49d8a04?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D" alt="Program-sosial" class="h-full w-full object-cover rounded" />
+                        <img src="images/achievement/d4.jpeg" alt="Program-sosial" class="h-full w-full object-cover rounded" />
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Program Sosial</h3>
-                        <p class="text-gray-600 mb-4">Santunan dan bantuan untuk masyarakat dhuafa serta program pemberdayaan.</p>
+                        <h3 class="text-xl font-bold mb-3">Program Pendidikan</h3>
+                        <p class="text-gray-600 mb-4">Santunan dan bantuan untuk masyarakat dhuafa serta program pendidikan.</p>
                         <a href="#donasi" class="text-blue-600 hover:text-blue-800 font-semibold">Berdonasi →</a>
                     </div>
                 </div>
@@ -217,7 +356,7 @@
     </section>
     
     <!-- ABOUT SECTION -->
-<section id="about" class="py-20 bg-gray-50">
+<section id="about" class="py-20 bg-gray-50 scroll-mt-20 md:scroll-mt-24">
   <div class="container mx-auto px-4">
     
     <!-- Judul dan Deskripsi -->
@@ -243,7 +382,9 @@
         <img src="images/achievement/d5.jpeg" alt="Pendidikan" class="slider-img">
         <img src="images/achievement/d6.jpeg" alt="Tahfidz" class="slider-img">
         <img src="images/achievement/d7.jpeg" alt="Kajian" class="slider-img">
-
+        <img src="images/achievement/d21.jpeg" alt="Umroh/Haji" class="slider-img">
+        <img src="images/achievement/d23.jpeg" alt="Umroh/Haji-2" class="slider-img">
+        
         <!-- Duplikasi agar looping mulus -->
         <img src="images/achievement/d1.jpeg" alt="Kerjasama Luar" class="slider-img">
         <img src="images/achievement/d2.jpeg" alt="Kegiatan 1" class="slider-img">
@@ -252,6 +393,8 @@
         <img src="images/achievement/d5.jpeg" alt="Pendidikan" class="slider-img">
         <img src="images/achievement/d6.jpeg" alt="Tahfidz" class="slider-img">
         <img src="images/achievement/d7.jpeg" alt="Kajian" class="slider-img">
+        <img src="images/achievement/d21.jpeg" alt="Umroh/Haji" class="slider-img">
+        <img src="images/achievement/d23.jpeg" alt="Umroh/Haji-2" class="slider-img">
       </div>
 
       <!-- Efek gradasi pinggir -->
@@ -338,44 +481,60 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
     <!-- GALLERY SECTION -->
-    <section id="gallery" class="py-20 bg-white">
+    <section id="gallery" class="py-16 md:py-20 bg-white scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galeri Kegiatan</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-            </div>
-
-            <!-- Gallery Filter -->
-            <div class="flex justify-center mb-12" data-aos="fade-up">
-                <div class="bg-gray-100 rounded-full p-2">
-                    <button class="gallery-filter px-6 py-2 rounded-full bg-blue-600 text-white" data-filter="all">Semua</button>
-                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="tahfidz">Tahfidz</button>
-                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="kajian">Kajian</button>
-                    <button class="gallery-filter px-6 py-2 rounded-full hover:bg-blue-100" data-filter="sosial">Sosial</button>
-                </div>
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galeri Kegiatan</h2>
+                <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6 md:mb-8"></div>
+                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                    Dokumentasi berbagai kegiatan dan pencapaian Yayasan Sabilulhuda
+                </p>
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="gallery-item tahfidz" data-aos="zoom-in">
-                    <img src="images/program-pendidikan1.jpg" alt="Tahfidz" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" onclick="openModal('images/achievement/d1.jpeg')">
+                    <img src="images/achievement/d1.jpeg" alt="Kegiatan 1" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
                 </div>
-                <div class="gallery-item kajian" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="images/program-kajian.jpg" alt="Kajian" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="100" onclick="openModal('images/achievement/d2.jpeg')">
+                    <img src="images/achievement/d2.jpeg" alt="Kegiatan 2" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
                 </div>
-                <div class="gallery-item sosial" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="images/program-dhuafa.jpg" alt="Sosial" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="200" onclick="openModal('images/achievement/d3.jpeg')">
+                    <img src="images/achievement/d3.jpeg" alt="Kegiatan 3" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
                 </div>
-                <div class="gallery-item tahfidz" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="images/beasiswa.jpg" alt="Beasiswa" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openModal(this.src)">
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="300" onclick="openModal('images/achievement/d4.jpeg')">
+                    <img src="images/achievement/d4.jpeg" alt="Kegiatan 4" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="400" onclick="openModal('images/achievement/d5.jpeg')">
+                    <img src="images/achievement/d5.jpeg" alt="Kegiatan 5" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="500" onclick="openModal('images/achievement/d6.jpeg')">
+                    <img src="images/achievement/d6.jpeg" alt="Kegiatan 6" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('images/achievement/d7.jpeg')">
+                    <img src="images/achievement/d7.jpeg" alt="Kegiatan 7" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="700" onclick="openModal('images/beasiswa.jpg')">
+                    <img src="images/beasiswa.jpg" alt="Program Beasiswa" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('images/achievement/d35.jpeg')">
+                    <img src="images/achievement/d35.jpeg" alt="Kegiatan 8" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('images/achievement/d36.jpeg')">
+                    <img src="images/achievement/d36.jpeg" alt="Kegiatan 9" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('images/achievement/d40.jpeg')">
+                    <img src="images/achievement/d40.jpeg" alt="Kegiatan 10" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('images/achievement/d39.jpeg')">
+                    <img src="images/achievement/d39.jpeg" alt="Kegiatan 10" class="w-full h-32 md:h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal for Gallery -->
+    <!-- Modal untuk Gallery -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">×</span>
         <img class="modal-content" id="modalImage">
@@ -386,47 +545,47 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="container mx-auto px-4">
         <!-- Judul -->
         <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Wakaf & Renovasi</h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Pembebasan tanah, pembangunan masjid, dan renovasi mushola demi kenyamanan ibadah umat.
-        </p>
-        </div>
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Wakaf & Renovasi</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Pembebasan tanah, pembangunan masjid, dan renovasi mushola demi kenyamanan ibadah umat.
+                    </p>
+                </div>
 
         <!-- Grid Card -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-            <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan1.jpeg')">
-            <img src="images/pembebasan-lahan1.jpeg" alt="Renovasi Mushola" class="h-full w-full object-cover" />
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan1.jpeg')">
+                <img src="images/pembebasan-lahan1.jpeg" alt="Renovasi Mushola" class="h-full w-full object-cover" />
+                </div>
+                <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 text-gray-800">Renovasi Mushola</h3>
+                <p class="text-gray-600 mb-4">
+                    Mendukung renovasi mushola agar lebih nyaman, bersih, dan layak digunakan untuk kegiatan ibadah serta pembinaan umat.
+                </p>
+                <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                    Donasi Sekarang →
+                </a>
+                </div>
             </div>
-            <div class="p-6">
-            <h3 class="text-2xl font-bold mb-3 text-gray-800">Renovasi Mushola</h3>
-            <p class="text-gray-600 mb-4">
-                Mendukung renovasi mushola agar lebih nyaman, bersih, dan layak digunakan untuk kegiatan ibadah serta pembinaan umat.
-            </p>
-            <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
-                Donasi Sekarang →
-            </a>
-            </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="150">
-            <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan2.jpeg')">
-            <img src="images/pembebasan-lahan2.jpeg" alt="Pembebasan Tanah" class="h-full w-full object-cover" />
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="150">
+                <div class="h-64 md:h-72 bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer" onclick="openModal('images/pembebasan-lahan2.jpeg')">
+                <img src="images/pembebasan-lahan2.jpeg" alt="Pembebasan Tanah" class="h-full w-full object-cover" />
+                </div>
+                <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 text-gray-800">Pembebasan Tanah</h3>
+                <p class="text-gray-600 mb-4">
+                    Berkontribusi dalam pembebasan lahan untuk pembangunan masjid dan fasilitas umum yang bermanfaat bagi masyarakat luas.
+                </p>
+                <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                    Donasi Sekarang →
+                </a>
+                </div>
             </div>
-            <div class="p-6">
-            <h3 class="text-2xl font-bold mb-3 text-gray-800">Pembebasan Tanah</h3>
-            <p class="text-gray-600 mb-4">
-                Berkontribusi dalam pembebasan lahan untuk pembangunan masjid dan fasilitas umum yang bermanfaat bagi masyarakat luas.
-            </p>
-            <a href="#wakaf" class="inline-block text-blue-600 hover:text-blue-800 font-semibold">
-                Donasi Sekarang →
-            </a>
-            </div>
-        </div>
 
         </div>
     </div>
@@ -494,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <!-- BEASISWA SECTION -->
-    <section id="beasiswa" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+    <section id="beasiswa" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Program Beasiswa</h2>
@@ -590,7 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <!-- PENDAFTARAN TAHSIN TAHFIZ SECTION -->
-    <section id="pendaftaran" class="py-20 bg-white">
+    <section id="pendaftaran" class="py-20 bg-white scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Pendaftaran Tahsin & Tahfiz</h2>
@@ -670,7 +829,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <!-- DONASI SECTION -->
-    <section id="donasi" class="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+    <section id="donasi" class="py-20 bg-gradient-to-br from-green-50 to-blue-50 scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Donasi & Wakaf</h2>
@@ -789,7 +948,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <!-- ALAMAT SECTION -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Alamat Kami</h2>
@@ -834,7 +993,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-gray-900 text-white">
+    <section id="contact" class="py-20 bg-gray-900 text-white scroll-mt-20 md:scroll-mt-24">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
@@ -850,7 +1009,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <i class="fas fa-phone text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold">Telepon / WhatsApp</h4>
+                                <h4 class="font-semibold">Telepon/WhatsApp</h4>
                                 <a href="https://wa.me/6287717723865" target="_blank" class="text-blue-400 hover:text-blue-300">0877-1772-3865 (Ustadz Atoillah Bastomi,Lc)</a>
                             </div>
                         </div>
@@ -1128,9 +1287,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <script src="home.js"></script>
-    <script src="data.js"></script>
 </body>
 </html>

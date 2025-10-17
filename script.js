@@ -1,30 +1,69 @@
 
         // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        // Optimized JavaScript with better performance
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS with mobile-friendly settings
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    offset: 50,
+                    disable: function() {
+                        return window.innerWidth < 768;
+                    }
+                });
+            }
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenuBtn = document.getElementById('close-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full');
-        });
-
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-        });
-
-        // Close mobile menu when clicking on links
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                mobileMenu.classList.add('translate-x-full');
+            // Preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 1500);
             }
         });
+
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuBtn = document.getElementById('close-menu');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('translate-x-full');
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu?.querySelectorAll('a[href^="#"]');
+            mobileMenuLinks?.forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const offset = 20; // jarak tambahan
+                        const targetPosition = target.offsetTop - headerHeight - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
@@ -52,47 +91,21 @@
 
         backToTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-        // Gallery Filter
-        const galleryFilters = document.querySelectorAll('.gallery-filter');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        galleryFilters.forEach(filter => {
-            filter.addEventListener('click', () => {
-                // Remove active class from all filters
-                galleryFilters.forEach(f => {
-                    f.classList.remove('bg-blue-600', 'text-white');
-                    f.classList.add('hover:bg-blue-100');
-                });
-                
-                // Add active class to clicked filter
-                filter.classList.add('bg-blue-600', 'text-white');
-                filter.classList.remove('hover:bg-blue-100');
-
-                const filterValue = filter.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                        item.classList.add('animate-fadeIn');
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Gallery Modal
-        function openModal(src) {
+        // Gallery Modal Functions
+        function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             modal.style.display = 'block';
-            modalImg.src = src;
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             const modal = document.getElementById('imageModal');
             modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
+
 
         // YouTube Slider
         let currentVideo = 0;
